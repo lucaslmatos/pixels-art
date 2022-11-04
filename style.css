@@ -24,6 +24,14 @@
   margin: 5px;
 }
 
+.color selected {
+  
+}
+
+#blackColor {
+  background-color: black;
+}
+
 #redColor {
   background-color: red;
 }
@@ -34,10 +42,6 @@
 
 #blueColor {
   background-color: blue;
-}
-
-#blackColor {
-  background-color: black;
 }
 
 #button-random {

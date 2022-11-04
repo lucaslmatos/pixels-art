@@ -33,12 +33,15 @@ window.onload = function memCor() {
 };
 
 function pixelBoardSize(size) {
-  for (let i = 0; i < size; i += 1) {
+  let sizeI = size;
+  if (sizeI < 5) sizeI = 5;
+  if (sizeI > 50) sizeI = 50;
+  for (let i = 0; i < sizeI; i += 1) {
     const localGrade = document.getElementById('pixel-board');
     const linha = document.createElement('section');
     linha.className = 'linha';
     localGrade.appendChild(linha);
-    for (let i2 = 0; i2 < size; i2 += 1) {
+    for (let i2 = 0; i2 < sizeI; i2 += 1) {
       const bloco = document.createElement('div');
       bloco.className = 'pixel';
       linha.appendChild(bloco);
