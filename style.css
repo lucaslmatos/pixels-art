@@ -14,7 +14,7 @@
 #color-palette {
   display: flex;
   justify-content: center;
-  margin: 40px;
+  margin: 20px;
 }
 
 .color {
@@ -38,5 +38,11 @@
 
 #blackColor {
   background-color: black;
+}
+
+#button-random {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }
 
