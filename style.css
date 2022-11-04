@@ -46,3 +46,21 @@
   margin: 20px;
 }
 
+#pixel-board {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.pixel {
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+}
+
+#linha {
+  display: flex;
+  justify-content: center;
+  margin: px;
+}

@@ -16,6 +16,34 @@ function rColor() {
   const g4 = parseInt(Math.random() * 255, 10);
   const b4 = parseInt(Math.random() * 255, 10);
   bloco4.style.backgroundColor = `rgb(${r4}, ${g4}, ${b4})`;
+  const mem = [r2, g2, b2, r3, g3, b3, r4, g4, b4];
+  localStorage.setItem('colorPalette', JSON.stringify(mem));
 }
 
 buttonRandom.addEventListener('click', rColor);
+
+window.onload = function memCor() {
+  if (localStorage.length !== 0) {
+    const mem = JSON.parse(localStorage.getItem('colorPalette'));
+    bloco2.style.backgroundColor = `rgb(${mem[0]}, ${mem[1]}, ${mem[2]})`;
+    bloco3.style.backgroundColor = `rgb(${mem[3]}, ${mem[4]}, ${mem[5]})`;
+    bloco4.style.backgroundColor = `rgb(${mem[6]}, ${mem[7]}, ${mem[8]})`;
+    console.log(mem);
+  }
+};
+
+function pixelBoardSize(size) {
+  for (let i = 0; i < size; i += 1) {
+    const localGrade = document.getElementById('pixel-board');
+    const linha = document.createElement('section');
+    linha.className = 'linha';
+    localGrade.appendChild(linha);
+    for (let i2 = 0; i2 < size; i2 += 1) {
+      const bloco = document.createElement('div');
+      bloco.className = 'pixel';
+      linha.appendChild(bloco);
+    }
+  }
+}
+
+pixelBoardSize(5);
