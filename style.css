@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#title {
+  text-align: center;
+  font-family: Franklin Gothic Medium, Arial Narrow, Arial, sans-serif;
+  font-size: 35px;
+  margin: 30px;
+  color-interpolation-filters: sRGB;
+}
+
+#color-palette {
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+
+.color {
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+}
+
+#redColor {
+  background-color: red;
+}
+
+#greenColor {
+  background-color: green;
+}
+
+#blueColor {
+  background-color: blue;
+}
+
+#yellowColor {
+  background-color: yellow;
+}
+
