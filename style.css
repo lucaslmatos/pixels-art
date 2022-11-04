@@ -47,20 +47,18 @@
 }
 
 #pixel-board {
-  display: flex;
+  display: grid;
   justify-content: center;
-  margin: 20px;
 }
 
 .pixel {
   border: 1px solid black;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   background-color: white;
+  display: inline-block;
 }
 
-#linha {
-  display: flex;
-  justify-content: center;
-  margin: px;
+.linha {
+  height: 40px;
 }
