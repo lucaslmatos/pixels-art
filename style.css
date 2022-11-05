@@ -24,8 +24,8 @@
   margin: 5px;
 }
 
-.color selected {
-  
+.selected {
+  display: inline;
 }
 
 #blackColor {

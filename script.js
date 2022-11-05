@@ -1,7 +1,12 @@
+// chamada dos botões e outros eventos importantes:
+
+const bloco1 = document.getElementById('blackColor');
 const bloco2 = document.getElementById('redColor');
 const bloco3 = document.getElementById('greenColor');
 const bloco4 = document.getElementById('blueColor');
 const buttonRandom = document.querySelector('#button-random-color');
+
+// Função que irá retornar e salvar as cores aleatórias da paleta.
 
 function rColor() {
   const r2 = parseInt(Math.random() * 255, 10);
@@ -22,15 +27,18 @@ function rColor() {
 
 buttonRandom.addEventListener('click', rColor);
 
+// Função para retornar os valores salvos ao iniciar a página.
+
 window.onload = function memCor() {
   if (localStorage.length !== 0) {
     const mem = JSON.parse(localStorage.getItem('colorPalette'));
     bloco2.style.backgroundColor = `rgb(${mem[0]}, ${mem[1]}, ${mem[2]})`;
     bloco3.style.backgroundColor = `rgb(${mem[3]}, ${mem[4]}, ${mem[5]})`;
     bloco4.style.backgroundColor = `rgb(${mem[6]}, ${mem[7]}, ${mem[8]})`;
-    console.log(mem);
   }
 };
+
+// Função para definir o tamanho do board de pixels.
 
 function pixelBoardSize(size) {
   let sizeI = size;
@@ -50,3 +58,16 @@ function pixelBoardSize(size) {
 }
 
 pixelBoardSize(5);
+
+// Função para selecinar a cor desejada.
+
+function selectColor(event) {
+  const procSelected = document.querySelector('.selected');
+  procSelected.classList.remove('selected');
+  event.target.classList.add('selected');
+}
+
+bloco1.addEventListener('click', selectColor);
+bloco2.addEventListener('click', selectColor);
+bloco3.addEventListener('click', selectColor);
+bloco4.addEventListener('click', selectColor);
