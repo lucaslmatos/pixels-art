@@ -66,3 +66,9 @@
 .linha {
   height: 40px;
 }
+
+#clear-board {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}

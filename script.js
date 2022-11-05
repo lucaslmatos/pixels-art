@@ -71,3 +71,21 @@ bloco1.addEventListener('click', selectColor);
 bloco2.addEventListener('click', selectColor);
 bloco3.addEventListener('click', selectColor);
 bloco4.addEventListener('click', selectColor);
+
+// Função para pintar o pixel clicado.
+
+function paintColor(event) {
+  const procSelected = document.querySelector('.selected');
+  const bgc = getComputedStyle(procSelected).backgroundColor;
+  const evento = event.target;
+  evento.style.backgroundColor = bgc;
+}
+
+const allPixels = document.querySelectorAll('.pixel');
+for (let i4 = 0; i4 < allPixels.length; i4 += 1) {
+  allPixels[i4].addEventListener('click', paintColor);
+}
+
+// Função para criar botão que limpa a tela.
+
+const buttonRandom = document.querySelector('#button-random-color');
