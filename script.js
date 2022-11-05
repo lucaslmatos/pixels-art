@@ -88,4 +88,11 @@ for (let i4 = 0; i4 < allPixels.length; i4 += 1) {
 
 // Função para criar botão que limpa a tela.
 
-const buttonRandom = document.querySelector('#button-random-color');
+function clearAll() {
+  for (let i5 = 0; i5 < allPixels.length; i5 += 1) {
+    allPixels[i5].style.backgroundColor = ('white');
+  }
+}
+
+const buttonClear = document.querySelector('#clear-board');
+buttonClear.addEventListener('click', clearAll);
