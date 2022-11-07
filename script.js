@@ -44,7 +44,11 @@ function pixelBoardSize(size) {
   }
 }
 
-pixelBoardSize(5);
+let boardSize = Number(JSON.parse(localStorage.getItem('boardSize')));
+if (boardSize < 5 || boardSize === '') {
+  boardSize = 5;
+}
+pixelBoardSize(boardSize);
 
 // Função para retornar os valores salvos ao iniciar a página.
 
@@ -116,8 +120,6 @@ buttonClear.addEventListener('click', clearAll);
 
 const input = document.getElementById('board-size');
 
-//
-
 const vqvButton = document.getElementById('generate-board');
 
 vqvButton.addEventListener('click', () => {
@@ -125,10 +127,18 @@ vqvButton.addEventListener('click', () => {
   linhas.innerHTML = '';
   if (input.value === '') {
     window.alert('Board inválido!');
+    input.value = 5;
+    pixelBoardSize(input.value);
+    linhas.innerHTML = '';
+    localStorage.setItem('boardSize', input.value);
   } else if (input.value < 5) {
     input.value = 5;
+    localStorage.setItem('boardSize', input.value);
   } else if (input.value > 50) {
     input.value = 50;
+    localStorage.setItem('boardSize', input.value);
   }
+  localStorage.setItem('boardSize', input.value);
   pixelBoardSize(input.value);
+  localStorage.removeItem('pixelBoard');
 });
