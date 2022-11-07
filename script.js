@@ -130,6 +130,7 @@ if (saved === null) {
 function clearAll() {
   for (let i5 = 0; i5 < allPixels.length; i5 += 1) {
     allPixels[i5].style.backgroundColor = ('white');
+    localStorage.removeItem('pixelBoard');
   }
 }
 
