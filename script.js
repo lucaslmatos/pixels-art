@@ -125,6 +125,10 @@ vqvButton.addEventListener('click', () => {
   linhas.innerHTML = '';
   if (input.value === '') {
     window.alert('Board inválido!');
+  } else if (input.value < 5) {
+    input.value = 5;
+  } else if (input.value > 50) {
+    input.value = 50;
   }
   pixelBoardSize(input.value);
 });
