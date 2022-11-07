@@ -27,23 +27,10 @@ function rColor() {
 
 buttonRandom.addEventListener('click', rColor);
 
-// Função para retornar os valores salvos ao iniciar a página.
-
-window.onload = function memCor() {
-  if (localStorage.length !== 0) {
-    const mem = JSON.parse(localStorage.getItem('colorPalette'));
-    bloco2.style.backgroundColor = `rgb(${mem[0]}, ${mem[1]}, ${mem[2]})`;
-    bloco3.style.backgroundColor = `rgb(${mem[3]}, ${mem[4]}, ${mem[5]})`;
-    bloco4.style.backgroundColor = `rgb(${mem[6]}, ${mem[7]}, ${mem[8]})`;
-  }
-};
-
 // Função para definir o tamanho do board de pixels.
 
 function pixelBoardSize(size) {
-  let sizeI = size;
-  if (sizeI < 5) sizeI = 5;
-  if (sizeI > 50) sizeI = 50;
+  const sizeI = size;
   for (let i = 0; i < sizeI; i += 1) {
     const localGrade = document.getElementById('pixel-board');
     const linha = document.createElement('section');
@@ -58,6 +45,28 @@ function pixelBoardSize(size) {
 }
 
 pixelBoardSize(5);
+
+// Função para retornar os valores salvos ao iniciar a página.
+
+if (localStorage.getItem('colorPalette') !== null) {
+  const mem = JSON.parse(localStorage.getItem('colorPalette'));
+  bloco2.style.backgroundColor = `rgb(${mem[0]}, ${mem[1]}, ${mem[2]})`;
+  bloco3.style.backgroundColor = `rgb(${mem[3]}, ${mem[4]}, ${mem[5]})`;
+  bloco4.style.backgroundColor = `rgb(${mem[6]}, ${mem[7]}, ${mem[8]})`;
+}
+if (localStorage.getItem('pixelBoard') !== null) {
+  const mem2 = JSON.parse(localStorage.getItem('pixelBoard'));
+  const allPixels = document.querySelectorAll('.pixel');
+  if (mem2) {
+    for (let i = 0; i < allPixels.length; i += 1) {
+      allPixels[i].style.backgroundColor = mem2[i];
+    }
+  }
+}
+
+function addLocalStorage(name, obj) {
+  localStorage.setItem(name, JSON.stringify(obj));
+}
 
 // Função para selecinar a cor desejada.
 
@@ -81,9 +90,15 @@ function paintColor(event) {
   evento.style.backgroundColor = bgc;
 }
 
+const savedColors = [];
 const allPixels = document.querySelectorAll('.pixel');
+
 for (let i4 = 0; i4 < allPixels.length; i4 += 1) {
-  allPixels[i4].addEventListener('click', paintColor);
+  allPixels[i4].addEventListener('click', (evt) => {
+    paintColor(evt);
+    savedColors[i4] = allPixels[i4].style.backgroundColor;
+    addLocalStorage('pixelBoard', savedColors);
+  });
 }
 
 // Função para criar botão que limpa a tela.
@@ -96,3 +111,20 @@ function clearAll() {
 
 const buttonClear = document.querySelector('#clear-board');
 buttonClear.addEventListener('click', clearAll);
+
+// Função para
+
+const input = document.getElementById('board-size');
+
+//
+
+const vqvButton = document.getElementById('generate-board');
+
+vqvButton.addEventListener('click', () => {
+  const linhas = document.querySelector('#pixel-board');
+  linhas.innerHTML = '';
+  if (input.value === '') {
+    window.alert('Board inválido!');
+  }
+  pixelBoardSize(input.value);
+});
